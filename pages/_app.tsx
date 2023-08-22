@@ -1,5 +1,7 @@
 import { Box, ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "../styles/ChampionCard.css";
+import '../styles/ChampionPage.css'
+import '../styles/font.css'
 
 const customTheme = extendTheme({
   styles:{
