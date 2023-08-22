@@ -3,6 +3,7 @@
 	animation: gradient 3s ease infinite;
     border-color: #C8AA6E;
     background-size: 800% 800%;
+	cursor: pointer;
 }
 
 @keyframes gradient {
