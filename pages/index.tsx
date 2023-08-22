@@ -1,22 +1,28 @@
 import type { NextPage } from "next";
-import {SimpleGrid } from "@chakra-ui/react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import { Champion } from "../types/Champion";
 import ChampionCard from "../components/ChampionCard";
+import Head from "next/head";
 
 const Home: NextPage = ({ champions }) => {
   return (
-    <SimpleGrid gap={6} columns={5}>
-      {champions.map((champion: Champion) => (
-        <ChampionCard
-          id={champion.id}
-          name={champion.id}
-          tags={champion.tags}
-          title={champion.title}
-          info={champion.info}
-          key={champion.id}
-        />
-      ))}
-    </SimpleGrid>
+    <Box>
+      <Head>
+        <title>League of Legends Champions</title>
+      </Head>
+      <SimpleGrid gap={6} columns={5}>
+        {champions.map((champion: Champion) => (
+          <ChampionCard
+            id={champion.id}
+            name={champion.id}
+            tags={champion.tags}
+            title={champion.title}
+            info={champion.info}
+            key={champion.id}
+          />
+        ))}
+      </SimpleGrid>
+    </Box>
   );
 };
 
