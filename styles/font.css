@@ -1,0 +1,15 @@
+/* Regular */
+@font-face{
+    font-family: 'BeaufortforLOL';
+    src: url('../assets/Font/BeaufortforLOL-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bold */
+@font-face{
+    font-family: 'BeaufortforLOL';
+    src: url('../assets/Font/BeaufortforLOL-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
