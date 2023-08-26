@@ -1,0 +1,19 @@
+.championCard:hover{
+    background: linear-gradient(-45deg, #0A323C, #005A82, #0397AB, #0AC8B9, #CDFAFA);
+	animation: gradient 3s ease infinite;
+    border-color: #C8AA6E;
+    background-size: 800% 800%;
+	cursor: pointer;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
