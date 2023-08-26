@@ -1,21 +1,6 @@
 import {Box, Flex, Text, Tooltip, Image, Spacer, SimpleGrid, Divider} from '@chakra-ui/react'
-import '../styles/ChampionCard.css'
 import {mageIcon, fighterIcon, marksmanIcon, assassinIcon, tankIcon, supportIcon} from '../assets/icons/ChampionCardClassIcons'
-
-type Info = {
-    attack: number, 
-    defense: number, 
-    magic: number, 
-    difficulty: number
-}
-
-type Champion = {
-    id: string,
-    name: string, 
-    tags: [string],
-    title: string, 
-    info: Info
-}
+import { Champion } from '../types/Champion'
 
 function ChampionCard({id, name, tags, title, info} : Champion){
     let icon_array : JSX.Element[] = []
