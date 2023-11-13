@@ -274,7 +274,7 @@ const Home: NextPage = ({ champions }) => {
             />
           </Box>
         </SimpleGrid>
-        <SimpleGrid gap={6} columns={5}>
+        <SimpleGrid gap={6} columns={[2, 5]}>
           {filteredChampions.map((champion: Champion) => (
             <Link href={`/champion/${champion.id}`} key={champion.id}>
               <ChampionCard

@@ -353,7 +353,7 @@ const ChampionPage: NextPage = ({ champion }) => {
             </TableContainer>
           </SimpleGrid>
 
-          <Text align="center" fontSize="xl" fontStyle="italic">
+          <Text align="center" fontSize="xl" fontStyle="italic" textColor="white">
             {champion.lore}
           </Text>
 
