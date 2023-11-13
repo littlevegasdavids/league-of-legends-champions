@@ -93,7 +93,7 @@ const Home: NextPage<HomePageProps> = ({ champions }) => {
         </Text>
         <SimpleGrid
           columns={{ mobile: 1, monitor: 3 }}
-          gap={{ mobile: 5, monitor: 10 }}
+          gap={5}
         >
           {
             //Conditional rendering because select item does not work correctly when using placeSelf={{phone: "center", monitor: "left"}}
@@ -122,11 +122,7 @@ const Home: NextPage<HomePageProps> = ({ champions }) => {
               placeholder="Difficulty"
               bgColor="#C8AA6E"
               borderColor="#A09B8C"
-              maxWidth={{
-                mobile: "50%",
-                tablet: "30%",
-                monitor: "max-content",
-              }}
+              maxWidth="50%"
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value)}
               placeSelf="center"
@@ -138,7 +134,7 @@ const Home: NextPage<HomePageProps> = ({ champions }) => {
             </Select>
           )}
 
-          <Box ml={5} placeSelf="center">
+          <Box placeSelf="center">
             <HStack>
               <Tooltip label="All">
                 <Button

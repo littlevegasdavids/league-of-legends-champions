@@ -1,5 +1,8 @@
 import { NextPage } from "next";
-import { getAllChampionPagePaths, getChampionData } from "../../lib/util/champions";
+import {
+  getAllChampionPagePaths,
+  getChampionData,
+} from "../../lib/util/champions";
 import {
   Box,
   Center,
@@ -22,6 +25,7 @@ import {
   Td,
   Thead,
   Tr,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import {
@@ -56,7 +60,7 @@ export async function getStaticPaths() {
 export const getStaticProps = async ({ params }: Params) => {
   const id = params.id;
 
-  const data = await getChampionData(id)
+  const data = await getChampionData(id);
 
   const champion = {
     id: data.data[id].id,
@@ -76,6 +80,8 @@ export const getStaticProps = async ({ params }: Params) => {
 };
 
 const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
+  const [isLagerThan1024] = useMediaQuery("(min-width: 1024px)");
+
   let icon_array: JSX.Element[] = [];
 
   champion.tags.forEach((tag: string) => {
@@ -108,14 +114,10 @@ const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
   return (
     <Box>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{champion.name}</title>
       </Head>
-      <Box
-        className="champion"
-        borderWidth="4px"
-        rounded="lg"
-        padding={{ mobile: 3, monitor: 6 }}
-      >
+      <Box className="champion" borderWidth="4px" rounded="lg" padding={3}>
         <Stack gap={6}>
           <Center>
             <Text
@@ -154,55 +156,108 @@ const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
                       return <div key={index}>{icon}</div>;
                     })}
                   </Flex>
+                  {
+                    // Using conditional rendering because responsive layouts for ChakraUI does not work on vercel
+                  }
+                  {isLagerThan1024 ? (
+                    <SimpleGrid columns={4}>
+                      <GridItem>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/0/07/Damage_rating.png/"
+                            alt="Damage Icon"
+                          />
+                        </Center>
 
-                  <SimpleGrid columns={{ mobile: 2, tablet: 4 }}>
-                    <GridItem>
-                      <Center>
-                        <Image
-                          width="25px"
-                          src="https://static.wikia.nocookie.net/leagueoflegends/images/0/07/Damage_rating.png/"
-                          alt="Damage Icon"
-                        />
-                      </Center>
+                        <Text as="b">Damage - {champion.info.attack}</Text>
+                      </GridItem>
 
-                      <Text as="b">Damage - {champion.info.attack}</Text>
-                    </GridItem>
+                      <GridItem>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/8/82/Toughness_rating.png"
+                            alt="Defense Icon"
+                          />
+                        </Center>
+                        <Text as="b">Defense - {champion.info.defense}</Text>
+                      </GridItem>
 
-                    <GridItem>
-                      <Center>
-                        <Image
-                          width="25px"
-                          src="https://static.wikia.nocookie.net/leagueoflegends/images/8/82/Toughness_rating.png"
-                          alt="Defense Icon"
-                        />
-                      </Center>
-                      <Text as="b">Defense - {champion.info.defense}</Text>
-                    </GridItem>
+                      <GridItem paddingTop={{ mobile: 3, tablet: 0 }}>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/8/8e/Champion_style_abilities_active.png"
+                            alt="Magic Icon"
+                          />
+                        </Center>
+                        <Text as="b">Magic - {champion.info.magic}</Text>
+                      </GridItem>
 
-                    <GridItem paddingTop={{ mobile: 3, tablet: 0 }}>
-                      <Center>
-                        <Image
-                          width="25px"
-                          src="https://static.wikia.nocookie.net/leagueoflegends/images/8/8e/Champion_style_abilities_active.png"
-                          alt="Magic Icon"
-                        />
-                      </Center>
-                      <Text as="b">Magic - {champion.info.magic}</Text>
-                    </GridItem>
+                      <GridItem paddingTop={{ mobile: 3, tablet: 0 }}>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e6/Control_rating.png"
+                            alt="Difficulty Icon"
+                          />
+                        </Center>
+                        <Text as="b">
+                          Difficulty - {champion.info.difficulty}
+                        </Text>
+                      </GridItem>
+                    </SimpleGrid>
+                  ) : (
+                    <SimpleGrid columns={2}>
+                      <GridItem>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/0/07/Damage_rating.png/"
+                            alt="Damage Icon"
+                          />
+                        </Center>
 
-                    <GridItem paddingTop={{ mobile: 3, tablet: 0 }}>
-                      <Center>
-                        <Image
-                          width="25px"
-                          src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e6/Control_rating.png"
-                          alt="Difficulty Icon"
-                        />
-                      </Center>
-                      <Text as="b">
-                        Difficulty - {champion.info.difficulty}
-                      </Text>
-                    </GridItem>
-                  </SimpleGrid>
+                        <Text as="b">Damage - {champion.info.attack}</Text>
+                      </GridItem>
+
+                      <GridItem>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/8/82/Toughness_rating.png"
+                            alt="Defense Icon"
+                          />
+                        </Center>
+                        <Text as="b">Defense - {champion.info.defense}</Text>
+                      </GridItem>
+
+                      <GridItem paddingTop={{ mobile: 3, tablet: 0 }}>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/8/8e/Champion_style_abilities_active.png"
+                            alt="Magic Icon"
+                          />
+                        </Center>
+                        <Text as="b">Magic - {champion.info.magic}</Text>
+                      </GridItem>
+
+                      <GridItem paddingTop={{ mobile: 3, tablet: 0 }}>
+                        <Center>
+                          <Image
+                            width="25px"
+                            src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e6/Control_rating.png"
+                            alt="Difficulty Icon"
+                          />
+                        </Center>
+                        <Text as="b">
+                          Difficulty - {champion.info.difficulty}
+                        </Text>
+                      </GridItem>
+                    </SimpleGrid>
+                  )}
 
                   <Text
                     fontWeight="bold"

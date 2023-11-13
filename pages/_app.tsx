@@ -31,6 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={customTheme}>
       <Head>
         <link rel="icon" href="leagueIcon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Box m={5}>
         <Component {...pageProps} />
