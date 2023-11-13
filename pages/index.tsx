@@ -300,7 +300,7 @@ const Home: NextPage<HomePageProps> = ({ champions }) => {
 export const getStaticProps = async () => {
   let champions: Champion[] = [];
 
-  const data = await getAllChampionData()
+  const data = await getAllChampionData();
 
   Object.values(data.data).forEach((champion: any) => {
     champions.push({
@@ -314,6 +314,11 @@ export const getStaticProps = async () => {
         magic: champion.info.magic,
         difficulty: champion.info.difficulty,
       },
+      lore: "",
+      allytips: [],
+      enemytips: [],
+      spells: [],
+      passive: "",
     });
   });
 
