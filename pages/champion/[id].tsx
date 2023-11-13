@@ -42,7 +42,13 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps = async ({ params }) => {
+interface Params {
+  params: {
+    id: string;
+  };
+}
+
+export const getStaticProps = async ({ params }: Params) => {
   const id = params.id;
 
   const response = await fetch(
