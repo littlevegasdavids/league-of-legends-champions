@@ -134,7 +134,7 @@ const Home: NextPage<HomePageProps> = ({ champions }) => {
             </Select>
           )}
 
-          <Box ml={5} placeSelf="center">
+          <Box placeSelf="center">
             <HStack>
               <Tooltip label="All">
                 <Button
