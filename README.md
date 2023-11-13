@@ -1,6 +1,18 @@
 # 🎮 League Of Legends Champions 🎮
 A simple single page application where a user can look at a list of different League Of Legends Champions and see all the relevant information, stats and lore about each Champion.
 
+## ▶️ How to Run ▶️
+1) Ensure that you have [NodeJS](https://nodejs.org/en/) installed on your computer. 
+2) Clone the repo.
+3) Install depencies
+   ```bash
+   npm install
+   ```
+4) Run the project
+   ```bash
+   npm start
+   ```
+
 ## 📚 What I learnt 📚
 This project not only taught me the ins and outs of React but also allowed me to wield the language of colors, UI, and UX to craft visually appealing displays. 
 
