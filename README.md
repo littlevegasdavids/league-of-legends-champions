@@ -16,5 +16,5 @@ I stricly used the colour pallet that [Riot Games Website provides](https://bran
 
 ## 🖥️ Screenshots 🖥️ 
 
-<img src="screenshots/dark-magician-card.jpeg" />
-<img src="screenshots/HomePage.png" />
+<img src="/images/dark-magician-card.jpeg" />
+<img src="/images/HomePage.png" />
