@@ -156,7 +156,7 @@ const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
                     })}
                   </Flex>
 
-                  <SimpleGrid columns={{ mobile: 2, tablet: 4 }}>
+                  <SimpleGrid columns={{ mobile: 2, tablet: 4, monitor: 4 }}>
                     <GridItem>
                       <Center>
                         <Image
