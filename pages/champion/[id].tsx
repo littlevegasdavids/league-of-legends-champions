@@ -108,6 +108,7 @@ const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
   return (
     <Box>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{champion.name}</title>
       </Head>
       <Box
