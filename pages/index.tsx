@@ -11,14 +11,19 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Champion } from "../types/Champion";
 import ChampionCard from "../components/ChampionCard";
 import Head from "next/head";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Champion } from "../lib/types";
+import { getAllChampionData } from "../lib/util/champions";
 
-const Home: NextPage = ({ champions }) => {
+interface HomePageProps {
+  champions: Champion[];
+}
+
+const Home: NextPage<HomePageProps> = ({ champions }) => {
   const [isLagerThan1024] = useMediaQuery("(min-width: 1024px)");
   const [selectedClass, setSelectedClass] = useState("All");
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
@@ -293,13 +298,9 @@ const Home: NextPage = ({ champions }) => {
 };
 
 export const getStaticProps = async () => {
-  const response = await fetch(
-    "https://ddragon.leagueoflegends.com/cdn/13.7.1/data/en_US/champion.json"
-  );
-
-  const data = await response.json();
-
   let champions: Champion[] = [];
+
+  const data = await getAllChampionData();
 
   Object.values(data.data).forEach((champion: any) => {
     champions.push({
@@ -313,6 +314,11 @@ export const getStaticProps = async () => {
         magic: champion.info.magic,
         difficulty: champion.info.difficulty,
       },
+      lore: "",
+      allytips: [],
+      enemytips: [],
+      spells: [],
+      passive: "",
     });
   });
 

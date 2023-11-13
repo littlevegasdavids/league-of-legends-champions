@@ -1,8 +1,20 @@
 import {Box, Flex, Text, Tooltip, Image, Spacer, SimpleGrid, Divider} from '@chakra-ui/react'
 import {mageIcon, fighterIcon, marksmanIcon, assassinIcon, tankIcon, supportIcon} from '../assets/icons/ChampionCardClassIcons'
-import { Champion } from '../types/Champion'
 
-function ChampionCard({id, name, tags, title, info} : Champion){
+interface ChampionCardProps{
+    id : string,
+    name : string,
+    tags : string[],
+    title : string,
+    info : {
+        attack : number,
+        defense : number,
+        magic : number,
+        difficulty : number
+    }
+}
+
+function ChampionCard({id, name, tags, title, info} : ChampionCardProps){
     let icon_array : JSX.Element[] = []
 
     tags.forEach((tag : string)=>{

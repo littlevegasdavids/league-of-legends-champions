@@ -3,6 +3,7 @@ import "../styles/ChampionCard.css";
 import "../styles/ChampionPage.css";
 import "../styles/font.css";
 import Head from "next/head";
+import { AppProps } from "next/app";
 
 const customTheme = extendTheme({
   styles: {
@@ -25,7 +26,7 @@ const customTheme = extendTheme({
   },
 });
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={customTheme}>
       <Head>

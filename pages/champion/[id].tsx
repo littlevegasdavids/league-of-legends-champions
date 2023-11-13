@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { getAllChampionPagePaths } from "../../lib/champion";
+import { getAllChampionPagePaths, getChampionData } from "../../lib/util/champions";
 import {
   Box,
   Center,
@@ -33,6 +33,17 @@ import {
   tankIcon,
 } from "../../assets/icons/ChampionCardClassIcons";
 import Head from "next/head";
+import { Champion } from "../../lib/types";
+
+interface Params {
+  params: {
+    id: string;
+  };
+}
+
+interface ChampionPageProps {
+  champion: Champion;
+}
 
 export async function getStaticPaths() {
   const paths = await getAllChampionPagePaths();
@@ -42,14 +53,10 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: Params) => {
   const id = params.id;
 
-  const response = await fetch(
-    `https://ddragon.leagueoflegends.com/cdn/13.7.1/data/en_US/champion/${id}.json`
-  );
-
-  const data = await response.json();
+  const data = await getChampionData(id)
 
   const champion = {
     id: data.data[id].id,
@@ -68,7 +75,7 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-const ChampionPage: NextPage = ({ champion }) => {
+const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
   let icon_array: JSX.Element[] = [];
 
   champion.tags.forEach((tag: string) => {
@@ -353,7 +360,12 @@ const ChampionPage: NextPage = ({ champion }) => {
             </TableContainer>
           </SimpleGrid>
 
-          <Text align="center" fontSize="xl" fontStyle="italic" textColor="white">
+          <Text
+            align="center"
+            fontSize="xl"
+            fontStyle="italic"
+            textColor="white"
+          >
             {champion.lore}
           </Text>
 
