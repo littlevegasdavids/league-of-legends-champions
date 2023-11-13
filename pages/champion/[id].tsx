@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { getAllChampionPagePaths } from "../../lib/champion";
+import { getAllChampionPagePaths } from "../../lib/util/championPagePaths";
 import {
   Box,
   Center,
@@ -33,18 +33,23 @@ import {
   tankIcon,
 } from "../../assets/icons/ChampionCardClassIcons";
 import Head from "next/head";
+import { Champion } from "../../lib/types";
+
+interface Params {
+  params: {
+    id: string;
+  };
+}
+
+interface ChampionPageProps {
+  champion: Champion;
+}
 
 export async function getStaticPaths() {
   const paths = await getAllChampionPagePaths();
   return {
     paths,
     fallback: false,
-  };
-}
-
-interface Params {
-  params: {
-    id: string;
   };
 }
 
@@ -74,7 +79,7 @@ export const getStaticProps = async ({ params }: Params) => {
   };
 };
 
-const ChampionPage: NextPage = ({ champion }) => {
+const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
   let icon_array: JSX.Element[] = [];
 
   champion.tags.forEach((tag: string) => {
@@ -359,7 +364,12 @@ const ChampionPage: NextPage = ({ champion }) => {
             </TableContainer>
           </SimpleGrid>
 
-          <Text align="center" fontSize="xl" fontStyle="italic" textColor="white">
+          <Text
+            align="center"
+            fontSize="xl"
+            fontStyle="italic"
+            textColor="white"
+          >
             {champion.lore}
           </Text>
 
