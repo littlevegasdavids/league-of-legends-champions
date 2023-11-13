@@ -17,7 +17,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Champion } from "../lib/types";
-import { getAllChampionData } from "../lib/util/getAllChampionData";
+import { getAllChampionData } from "../lib/util/champions";
 
 interface HomePageProps {
   champions: Champion[];

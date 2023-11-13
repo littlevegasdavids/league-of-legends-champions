@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { getAllChampionPagePaths } from "../../lib/util/championPagePaths";
+import { getAllChampionPagePaths, getChampionData } from "../../lib/util/champions";
 import {
   Box,
   Center,
@@ -56,11 +56,7 @@ export async function getStaticPaths() {
 export const getStaticProps = async ({ params }: Params) => {
   const id = params.id;
 
-  const response = await fetch(
-    `https://ddragon.leagueoflegends.com/cdn/13.7.1/data/en_US/champion/${id}.json`
-  );
-
-  const data = await response.json();
+  const data = await getChampionData(id)
 
   const champion = {
     id: data.data[id].id,
