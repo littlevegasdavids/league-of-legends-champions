@@ -24,7 +24,7 @@ I stricly used the colour pallet that [Riot Games Website provides](https://bran
 
 **Frontend**: React, ChakraUI
 
-**Backend**: Wrapped a TypeScript (See: libs/champions.ts) function around the [ddraongs API](https://developer.riotgames.com/docs/lol#data-dragon_champions) provided by Riot Games. This allowed me to call the API to get all relevenat champion data as well as ensuring that any new champions added to the game will reflect on the app as well.
+**Backend**: Wrapped a TypeScript (See: [libs/champions.ts](https://github.com/littlevegasdavids/league-of-legends-champions/blob/main/lib/champion.ts)) function around the [ddraongs API](https://developer.riotgames.com/docs/lol#data-dragon_champions) provided by Riot Games. This allowed me to call the API to get all relevenat champion data as well as ensuring that any new champions added to the game will reflect on the app as well.
 
 ## 🖥️ Screenshots 🖥️ 
 
