@@ -115,7 +115,7 @@ const ChampionPage: NextPage<ChampionPageProps> = ({ champion }) => {
         className="champion"
         borderWidth="4px"
         rounded="lg"
-        padding={{ mobile: 3, monitor: 6 }}
+        padding={3}
       >
         <Stack gap={6}>
           <Center>
